@@ -9,18 +9,16 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit {
   title = 'project with http calls';
   users: any[] = [];
+  data: any;
 
   constructor(protected _userService: UserService){  }
 
   ngOnInit(){
-    this._userService.getUsers()
-      .subscribe(
-        (data)=> {
-          this.users = data['results'];
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+    this._userService.getUsers().subscribe(
+      data => {
+        this.data = data['results'];
+        this.users = data['results'];
+      }
+    )
   }
 }
