@@ -4,10 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
+import { CitiesComponent } from './components/cities/cities.component';
+import { CityComponent } from './components/city/city.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CitiesComponent,
+    CityComponent
   ],
   imports: [
     BrowserModule,

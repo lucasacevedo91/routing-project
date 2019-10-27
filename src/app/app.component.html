@@ -289,12 +289,4 @@
 <div style="text-align: center;">
   <h1>Welcome to {{ title }}</h1>
 </div>
-<ng-container *ngFor="let c of cities | slice:0:5; let i=index">
-  <li [ngStyle]="{'list-style': 'none'}">
-    <h2>{{c.LocalizedName}}, {{ c.AdministrativeArea.LocalizedName }}, {{ c.Country.LocalizedName }}</h2>
-    <button [ngStyle]="{'margin-right': '10px', 'margin-left': '5px'}"
-            (click)="getCurrentWeather(c.Key)"        
-    >Current weather</button>
-    <button [ngStyle]="{'margin-left': '5px'}">Forecast</button>
-  </li>
-</ng-container>
+<cities></cities>

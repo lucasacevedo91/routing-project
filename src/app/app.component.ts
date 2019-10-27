@@ -8,30 +8,14 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent implements OnInit {
   title = 'project with http calls';
-  cities: any[] = [];
   data: any;
   city: any;
 
-  constructor(protected _cityService: UserService){  }
+  constructor(){  }
 
   ngOnInit(){
-    this._cityService.getCity().subscribe(
-      response => {
-        console.log(response);
-        response.forEach((r, index) => {
-          this.cities[index] = r;           
-        });
-        console.log(this.cities);
-      }
-    )
+    
   }
 
-  getCurrentWeather(key){
-    this._cityService.getCurrent(key).subscribe(
-      response => {
-        this.city = response;
-        console.log(this.city);
-      }
-    )
-  }
+  
 }
