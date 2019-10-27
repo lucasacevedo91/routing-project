@@ -1,0 +1,11 @@
+div{
+    width: auto;
+    margin: 0 auto;
+    font-size: 115%;
+    letter-spacing: 2px;
+}
+img{
+    float: left;
+    max-height: 55px;
+    margin-left: 2px;
+}

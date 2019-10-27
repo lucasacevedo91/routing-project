@@ -28,7 +28,7 @@ export class CitiesComponent implements OnInit {
     this._cityService.getCurrent(key).subscribe(
       response => {
         this.city = response;
-        console.log(this.city);
+        console.table(this.city);
       }
     )
   }

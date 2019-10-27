@@ -1,9 +1,9 @@
 <ng-container *ngFor="let c of cities | slice:0:5; let i=index">
     <li [ngStyle]="{'list-style': 'none'}">
-      <h2>{{c.LocalizedName}}, {{ c.AdministrativeArea.LocalizedName }}, {{ c.Country.LocalizedName }}</h2>
-      <button [ngStyle]="{'margin-right': '10px', 'margin-left': '5px'}"
-              (click)="getCurrentWeather(c.Key)"        
-      >Current weather</button>
-      <button [ngStyle]="{'margin-left': '5px'}">Forecast</button>
+        <h2>{{c.LocalizedName}}, {{ c.AdministrativeArea.LocalizedName }}, {{ c.Country.LocalizedName }}</h2>
+        <button [ngStyle]="{'margin-right': '10px', 'margin-left': '5px'}"
+                (click)="getCurrentWeather(c.Key)"        
+        >Current weather</button>
+        <button [ngStyle]="{'margin-left': '5px'}">Forecast</button>
     </li>
-  </ng-container>
+</ng-container>
