@@ -6,10 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  public url: string = "http://dataservice.accuweather.com";
+  public apiKey: string = "?apikey=nWWmrippmmeCdISeWZ4YYrSMSeGFK8pT";
 
   constructor(protected http: HttpClient) { }
 
-  getUsers(): Observable<any>{
-    return this.http.get("https://randomuser.me/api/?results=25");
+  getCity(): Observable<any>{
+    return this.http.get(this.url + "/locations/v1/cities/search" + this.apiKey + "&q=Rosario&language=es-ar");
+  }
+
+  getCurrent(key): Observable<any>{
+    return this.http.get(this.url + "/currentconditions/v1/" + key + this.apiKey);
   }
 }

@@ -288,10 +288,13 @@
 
 <div style="text-align: center;">
   <h1>Welcome to {{ title }}</h1>
-  <h1>Tu vieja</h1>
 </div>
-<div *ngFor="let u of users">
-  <img [src]="u.picture.medium">
-  <h2>{{ u.name.first | uppercase }}</h2>
-  <p>{{ u.email }}</p>
-</div>
+<ng-container *ngFor="let c of cities | slice:0:5; let i=index">
+  <li [ngStyle]="{'list-style': 'none'}">
+    <h2>{{c.LocalizedName}}, {{ c.AdministrativeArea.LocalizedName }}, {{ c.Country.LocalizedName }}</h2>
+    <button [ngStyle]="{'margin-right': '10px', 'margin-left': '5px'}"
+            (click)="getCurrentWeather(c.Key)"        
+    >Current weather</button>
+    <button [ngStyle]="{'margin-left': '5px'}">Forecast</button>
+  </li>
+</ng-container>
