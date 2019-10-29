@@ -33,6 +33,7 @@
     background-color: #1976d2;
     color: white;
     font-weight: 600;
+    margin-bottom: 20px;
   }
 
   .toolbar img {
@@ -109,9 +110,10 @@
 </style>
 
 <headbar class="toolbar" role="banner"></headbar>
-<div>
+<div [ngStyle]="{'color': 'white'}">
   <form>
-    <p></p>
+    <label for="search">Search for a city: </label>
+    <input type="text" name="search">
   </form>
   <cities *ngIf="!flag"></cities>
   <city *ngIf="flag"></city>    
