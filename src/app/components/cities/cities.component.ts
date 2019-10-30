@@ -14,6 +14,7 @@ export class CitiesComponent implements OnInit {
   public cities: Ciudad[] = [];
   public pic = "../../../assets/sunny-field.jpg";
   public newCity: Ciudad;
+  public search: any;
 
 
   constructor(protected _cityService: UserService) { }
