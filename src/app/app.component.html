@@ -111,10 +111,6 @@
 
 <headbar class="toolbar" role="banner"></headbar>
 <div [ngStyle]="{'color': 'white'}">
-  <form>
-    <label for="search">Search for a city: </label>
-    <input type="text" name="search">
-  </form>
-  <cities *ngIf="!flag"></cities>
-  <city *ngIf="flag"></city>    
+  <cities></cities>
+  <city></city>    
 </div>

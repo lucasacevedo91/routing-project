@@ -11,8 +11,8 @@ export class UserService {
 
   constructor(protected http: HttpClient) { }
 
-  getCity(): Observable<any>{
-    return this.http.get(this.url + "/locations/v1/cities/search" + this.apiKey + "&q=Rosario&language=es-ar");
+  getCity(name): Observable<any>{
+    return this.http.get(this.url + "/locations/v1/cities/search" + this.apiKey + "&q=" + name + "&language=es-ar");
   }
 
   getCurrent(key): Observable<any>{

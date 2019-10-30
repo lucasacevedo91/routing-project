@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'project with http calls';
   data: any;
   city: any;
-  flag: boolean = false;
+  public flag: boolean = false;
 
   constructor(){  }
 

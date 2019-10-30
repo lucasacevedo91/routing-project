@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CitiesComponent } from './components/cities/cities.component';
-//import { CityComponent } from './components/city/city.component';
+import { CityComponent } from './components/city/city.component';
 import { HeadbarComponent } from './components/headbar/headbar.component';
 
 @NgModule({
@@ -13,11 +13,12 @@ import { HeadbarComponent } from './components/headbar/headbar.component';
     HeadbarComponent,
     AppComponent,
     CitiesComponent,
-    /*CityComponent*/
+    CityComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

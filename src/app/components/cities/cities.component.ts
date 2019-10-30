@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { Ciudad } from '../../models/city.model';
 
 @Component({
   selector: 'cities',
@@ -7,30 +8,51 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./cities.component.css']
 })
 export class CitiesComponent implements OnInit {
-  cities: any[] = [];
+  public found: any[] = [];
   public city: any;
+  public end: number = 5;
+  public cities: Ciudad[] = [];
+  public pic = "../../../assets/sunny-field.jpg";
+  public newCity: Ciudad;
+
 
   constructor(protected _cityService: UserService) { }
 
   ngOnInit() {
-    this._cityService.getCity().subscribe(
+    
+  }
+
+  increase(){
+    this.end += 5;
+  }
+
+  findCity(name){
+    this._cityService.getCity(name).subscribe(
       response => {
-        console.log(response);
         response.forEach((r, index) => {
-          this.cities[index] = r;           
+
+          this.found[index] = r;           
         });
-        console.log(this.cities);
+        console.log(this.found);
       }
     )
   }
 
-  getCurrentWeather(key){
+  getCurrentWeather(key, name){
     this._cityService.getCurrent(key).subscribe(
       response => {
         this.city = response;
-        console.table(this.city);
+        console.log(this.city);
       }
-    )
+    );
   }
 
+  addCity(name, ciudad){
+    console.log(ciudad[0].WeatherText);
+    this.newCity = new Ciudad(name, ciudad[0].Temperature.Metric.Value, ciudad[0].WeatherText);
+    this.cities.push(this.newCity);
+    console.table(this.cities);
+    console.log(this);
+  }
+  
 }
