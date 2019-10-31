@@ -1,45 +1,130 @@
 <form #citySearch="ngForm">
-    <label for="search">Search for a city: </label>
-    <input type="text" name="search" [(ngModel)]="search">
-    <input type="submit" value="Search" (click)="findCity(search)">
+  <label for="search">Search for a city: </label>
+  <input type="text" name="search" [(ngModel)]="search" />
+  <input type="submit" value="Search" (click)="findCity(search)" />
 </form>
 <div class="container">
-    <ng-container *ngFor="let f of found | slice:0:end; let i=index">
-        <li [ngStyle]="{'list-style': 'none'}">
-            <h2>{{f.LocalizedName}}, {{ f.AdministrativeArea.LocalizedName }}, {{ f.Country.LocalizedName }}</h2>
-            <button [ngStyle]="{'margin-right': '10px', 'margin-left': '5px'}"
-                    (click)="getCurrentWeather(f.Key, f.LocalizedName);"        
-            >Current weather</button>
-            <button [ngStyle]="{'margin-right': '10px', 'margin-left': '5px'}"
-                    (click)="addCity(f.LocalizedName, this.city);"
-            >Add City</button>
-            <button [ngStyle]="{'margin-left': '5px'}">Forecast</button>
-        </li>
-    </ng-container>
-    <div *ngIf="found.length>0">
-        <a href="#" (click)="increase()">Show more...</a>
-    </div>    
+  <ng-container *ngFor="let f of found | slice: 0:end; let i = index">
+    <li [ngStyle]="{ 'list-style': 'none' }">
+      <h2>
+        {{ f.LocalizedName }}, {{ f.AdministrativeArea.LocalizedName }},
+        {{ f.Country.LocalizedName }}
+      </h2>
+      <button
+        [ngStyle]="{ 'margin-right': '10px', 'margin-left': '5px' }"
+        (click)="getCurrentWeather(f.Key, f.LocalizedName)"
+      >
+        Current weather
+      </button>
+      <button
+        [ngStyle]="{ 'margin-right': '10px', 'margin-left': '5px' }"
+        (click)="addCity(f.LocalizedName, this.city)"
+      >
+        Add City
+      </button>
+      <button [ngStyle]="{ 'margin-left': '5px' }">Forecast</button>
+    </li>
+  </ng-container>
+  <div *ngIf="found.length > 0">
+    <a href="#" (click)="increase()">Show more...</a>
+  </div>
 </div>
 
-<div class="container" [ngStyle]="{'width': 'auto', 'margin': '20px auto'}">
-    <div *ngFor="let c of cities" 
+<div class="container" [ngStyle]="{ width: 'auto', margin: '20px auto' }">
+  <div
+    *ngFor="let c of cities"
     [style.background-image]="'url(' + pic + ')'"
-    [ngStyle]="{'border-radius': '8%', 'display': 'inline-block', 'margin': '5px', 'align-content': 'center'}">
+    [ngStyle]="{
+      'border-radius': '8%',
+      display: 'inline-block',
+      margin: '5px',
+      'align-content': 'center'
+    }"
+  >
     <div class="card">
-            <div class="content" [ngStyle]="{'color': 'black', 'margin': '0 auto'}">
-                <h2>{{c.name}}</h2>
-                <p>{{c.weather}}</p>
-                <ng-container [ngSwitch]="c.weather" >
-                    <img src="../../../assets/sun.png" alt="Sunny" *ngSwitchCase="'Sunny'">
-                    <img src="../../../assets/sun.png" alt="Sunny" *ngSwitchCase="'Mostly sunny'">
-                    <img src="../../../assets/sun.png" alt="Sunny" *ngSwitchCase="'Partly sunny'">
-                    <img src="../../../assets/sun.png" alt="Sunny" *ngSwitchCase="'Intermittent clouds'">
-                    <img src="../../../assets/cloud.png" alt="Cloudy" *ngSwitchCase="'Cloudy'">
-                    <img src="../../../assets/rain.png" alt="Rainy" *ngSwitchCase="'Rainy'">
-                    <img src="../../../assets/rain.png" alt="Rainy" *ngSwitchDefault>
-                </ng-container>
-                <h1>{{c.temp}}°C</h1>
-            </div>
-        </div>    
+      <div class="content" [ngStyle]="{ color: 'black', margin: '0 auto' }">
+        <h2>{{ c.name }}</h2>
+        <p>{{ c.weather }}</p>
+        <ng-container [ngSwitch]="c.weather">
+          <img
+            src="../../../assets/sun.png"
+            alt="Sunny"
+            *ngSwitchCase="'Sunny'"
+          />
+          <img
+            src="../../../assets/sun.png"
+            alt="Sunny"
+            *ngSwitchCase="'Mostly sunny'"
+          />
+          <img
+            src="../../../assets/sun.png"
+            alt="Sunny"
+            *ngSwitchCase="'Partly sunny'"
+          />
+          <img
+            src="../../../assets/sun.png"
+            alt="Sunny"
+            *ngSwitchCase="'Intermittent clouds'"
+          />
+          <img
+            src="../../../assets/clouds.png"
+            alt="Cloudy"
+            *ngSwitchCase="'Cloudy'"
+          />
+          <img
+            src="../../../assets/cloud.png"
+            alt="Cloudy"
+            *ngSwitchCase="'Mostly cloudy'"
+          />
+          <img
+            src="../../../assets/cloud.png"
+            alt="Cloudy"
+            *ngSwitchCase="'Clouds and sun'"
+          />
+          <img
+            src="../../../assets/cloud.png"
+            alt="Cloudy"
+            *ngSwitchCase="'Some clouds'"
+          />
+          <img
+            src="../../../assets/moon.png"
+            alt="Clear"
+            *ngSwitchCase="'Clear'"
+          />
+          <img
+            src="../../../assets/moon.png"
+            alt="Clear"
+            *ngSwitchCase="'Mostly clear'"
+          />
+          <img
+            src="../../../assets/moon.png"
+            alt="Clear"
+            *ngSwitchCase="'Partly cloudy'"
+          />
+          <img
+            src="../../../assets/rain.png"
+            alt="Rainy"
+            *ngSwitchCase="'Showers'"
+          />
+          <img
+            src="../../../assets/rain.png"
+            alt="Rainy"
+            *ngSwitchCase="'Rain'"
+          />
+          <img
+            src="../../../assets/rain.png"
+            alt="Rainy"
+            *ngSwitchCase="'Mostly cloudy w/ flurries'"
+          />
+          <img
+            src="../../../assets/rain.png"
+            alt="Rainy"
+            *ngSwitchCase="'Partly sunny w/ flurries'"
+          />
+          <img src="../../../assets/rain.png" alt="Rainy" *ngSwitchDefault />
+        </ng-container>
+        <h1>{{ c.temp }}°C</h1>
+      </div>
     </div>
+  </div>
 </div>
